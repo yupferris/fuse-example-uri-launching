@@ -1,3 +1,12 @@
 <App Theme="Basic">
+	<DockPanel>
+		<StatusBarBackground Dock="Top" />
+		<BottomBarBackground Dock="Bottom" />
+
+		<JavaScript>
+		</JavaScript>
+
+
+	</DockPanel>
 </App>
 
