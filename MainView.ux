@@ -1,12 +1,65 @@
 <App Theme="Basic">
 	<DockPanel>
+		<Style>
+			<Text TextColor="#fff" FontSize="40" />
+		</Style>
+
 		<StatusBarBackground Dock="Top" />
 		<BottomBarBackground Dock="Bottom" />
 
 		<JavaScript>
+			var Observable = require("FuseJS/Observable");
+			var InterApp = require("FuseJS/InterApp");
+
+			var currentPage = Observable("page1");
+
+			InterApp.onReceivedUri = function(uri) {
+				console.log("Uri received: " + uri);
+				currentPage.value =
+					uri.replace("fuse-uri-launching://", "");
+			};
+
+			function goToPage1() {
+				InterApp.launchUri(
+					"fuse-uri-launching://page1");
+			}
+
+			function goToPage2() {
+				InterApp.launchUri(
+					"fuse-uri-launching://page2");
+			}
+
+			module.exports = {
+				currentPage: currentPage,
+
+				goToPage1: goToPage1,
+				goToPage2: goToPage2
+			};
 		</JavaScript>
 
+		<PageControl Active="{currentPage}">
+			<Page ux:Name="page1">
+				<Rectangle Layer="Background" Fill="#6fa5fb" />
+				
+				<StackPanel Alignment="Center">
+					<Text>Page 1</Text>
+					<Button
+						Text="Go to page 2"
+						Clicked="{goToPage2}" />
+				</StackPanel>
+			</Page>
 
+			<Page ux:Name="page2">
+				<Rectangle Layer="Background" Fill="#b1657a" />
+
+				<StackPanel Alignment="Center">
+					<Text>Page 2</Text>
+					<Button
+						Text="Go to page 1"
+						Clicked="{goToPage1}" />
+				</StackPanel>
+			</Page>
+		</PageControl>
 	</DockPanel>
 </App>
 

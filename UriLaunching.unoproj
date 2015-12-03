@@ -25,5 +25,8 @@
   ],
   "Includes": [
     "*"
-  ]
+  ],
+  "Mobile": {
+    "UriScheme": "fuse-uri-launching"
+  }
 }
