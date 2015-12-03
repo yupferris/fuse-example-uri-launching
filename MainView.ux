@@ -9,24 +9,15 @@
 
 		<JavaScript>
 			var Observable = require("FuseJS/Observable");
-			var InterApp = require("FuseJS/InterApp");
 
 			var currentPage = Observable("page1");
 
-			InterApp.onReceivedUri = function(uri) {
-				console.log("Uri received: " + uri);
-				currentPage.value =
-					uri.replace("fuse-uri-launching://", "");
-			};
-
 			function goToPage1() {
-				InterApp.launchUri(
-					"fuse-uri-launching://page1");
+				currentPage.value = "page1";
 			}
 
 			function goToPage2() {
-				InterApp.launchUri(
-					"fuse-uri-launching://page2");
+				currentPage.value = "page2";
 			}
 
 			module.exports = {
