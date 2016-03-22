@@ -1,8 +1,6 @@
 <App Theme="Basic">
 	<DockPanel>
-		<Style>
-			<Text TextColor="#fff" FontSize="40" />
-		</Style>
+		<Text ux:Class="TitleText" TextColor="#fff" FontSize="40" />
 
 		<StatusBarBackground Dock="Top" />
 		<BottomBarBackground Dock="Bottom" />
@@ -42,7 +40,7 @@
 				<Rectangle Layer="Background" Fill="#6fa5fb" />
 				
 				<StackPanel Alignment="Center">
-					<Text>Page 1</Text>
+					<TitleText>Page 1</TitleText>
 					<Button
 						Text="Go to page 2"
 						Clicked="{goToPage2}" />
@@ -53,7 +51,7 @@
 				<Rectangle Layer="Background" Fill="#b1657a" />
 
 				<StackPanel Alignment="Center">
-					<Text>Page 2</Text>
+					<TitleText>Page 2</TitleText>
 					<Button
 						Text="Go to page 1"
 						Clicked="{goToPage1}" />
